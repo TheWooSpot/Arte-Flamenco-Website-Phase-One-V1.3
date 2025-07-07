@@ -123,7 +123,7 @@ const Shop = () => {
             backgroundImage: 'url(https://images.pexels.com/photos/3662840/pexels-photo-3662840.jpeg)',
           }}
         >
-          <div className="absolute inset-0 bg-black/70"></div>
+          <div className="absolute inset-0 bg-black/60"></div>
         </div>
         
         <motion.div 
@@ -238,7 +238,7 @@ const Shop = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
               Clarita's <span className="text-flamenco-500">Recommendations</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -300,7 +300,7 @@ const Shop = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-black">
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-black">
               Support Your Movement Journey
             </h2>
             <p className="text-xl text-black/80 mb-8 max-w-2xl mx-auto">
