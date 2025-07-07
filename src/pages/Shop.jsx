@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+I import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Shop = () => {
@@ -314,8 +314,8 @@ const Shop = () => {
                 Gift Cards Available
               </button>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </section>
     </div>
   );
