@@ -1,4 +1,4 @@
-You didn't get a call let's just do the math I don't hear the voicemail let's do the math no it makes sense right I mean I hear what they're saying I don't need to hear so this is a 28.5 / for 400 or less which is 7.3 7 this is 7.37 hours per day and we drop her off overtime right now so 9 to 4 sometime off to import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView, useAnimation } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -36,7 +36,7 @@ const Home = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.6, 0.05, -0.01, 0.9]
       }
     }
   };
@@ -75,10 +75,11 @@ const Home = () => {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6">
+              <span className="block">Clarita</span>
               <span className="text-flamenco-500">Arte Flamenco</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-8">
-              Immerse Yourself in the Passion, Power, and Poetry of Dance
+              Experience the passion, rhythm, and soul of authentic flamenco dance in our studio and performances.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link 
@@ -304,21 +305,25 @@ const Home = () => {
                 className="bg-gray-900 rounded-lg p-8 relative"
                 variants={fadeInUp}
               >
-                <svg className="w-12 h-12 text-flamenco-600/30 absolute top-6 left-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-12 h-12 text-flamenco-600/30 absolute top-6 left-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
                 </svg>
-                <div className="flex items-center mb-4 mt-8">
-                  <img 
-                    src={testimonial.image} 
-                    alt={testimonial.name} 
-                    className="w-12 h-12 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                    <p className="text-gray-400 text-sm">{testimonial.role}</p>
+                <div className="relative z-10">
+                  <p className="text-gray-300 mb-6 italic leading-relaxed">
+                    "{testimonial.quote}"
+                  </p>
+                  <div className="flex items-center">
+                    <img 
+                      src={testimonial.image} 
+                      alt={testimonial.name} 
+                      className="w-12 h-12 rounded-full object-cover mr-4"
+                    />
+                    <div>
+                      <h4 className="text-white font-semibold">{testimonial.name}</h4>
+                      <p className="text-flamenco-400 text-sm">{testimonial.role}</p>
+                    </div>
                   </div>
                 </div>
-                <p className="text-gray-300 italic">"{testimonial.quote}"</p>
               </motion.div>
             ))}
           </motion.div>
@@ -350,16 +355,16 @@ const Home = () => {
           >
             {[
               {
-                title: "Flamenco Masterclass",
+                title: "Flamenco Showcase Night",
                 date: "March 15, 2024",
-                description: "An intensive workshop with guest artist Carmen Herrera, focusing on advanced palmas and compás techniques.",
-                image: "https://images.pexels.com/photos/8471741/pexels-photo-8471741.jpeg"
+                description: "An evening of passionate performances featuring our advanced students and guest artists from Spain.",
+                image: "https://images.pexels.com/photos/8471740/pexels-photo-8471740.jpeg"
               },
               {
-                title: "Spring Recital",
-                date: "April 20, 2024",
-                description: "Our students showcase their progress in a beautiful evening of flamenco performances for family and friends.",
-                image: "https://images.pexels.com/photos/8471742/pexels-photo-8471742.jpeg"
+                title: "Beginner Workshop Series",
+                date: "March 22, 2024",
+                description: "A special 3-day intensive workshop for those new to flamenco, covering basics and cultural context.",
+                image: "https://images.pexels.com/photos/8471815/pexels-photo-8471815.jpeg"
               }
             ].map((event, index) => (
               <motion.div 
@@ -423,7 +428,7 @@ const Home = () => {
               Studio <span className="text-flamenco-500">Gallery</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Glimpse into the passion and artistry that fills our studio every day.
+              Glimpses of the passion, artistry, and community that define our flamenco studio.
             </p>
           </motion.div>
           
@@ -434,14 +439,14 @@ const Home = () => {
             animate={galleryInView ? "visible" : "hidden"}
           >
             {[
-              "https://images.pexels.com/photos/8471743/pexels-photo-8471743.jpeg",
-              "https://images.pexels.com/photos/8471744/pexels-photo-8471744.jpeg",
-              "https://images.pexels.com/photos/8471745/pexels-photo-8471745.jpeg",
-              "https://images.pexels.com/photos/8471746/pexels-photo-8471746.jpeg"
+              "https://images.pexels.com/photos/8471739/pexels-photo-8471739.jpeg",
+              "https://images.pexels.com/photos/8471815/pexels-photo-8471815.jpeg",
+              "https://images.pexels.com/photos/8471798/pexels-photo-8471798.jpeg",
+              "https://images.pexels.com/photos/8471740/pexels-photo-8471740.jpeg"
             ].map((image, index) => (
               <motion.div 
                 key={index}
-                className="aspect-square overflow-hidden rounded-lg group"
+                className="aspect-square overflow-hidden rounded-lg group cursor-pointer"
                 variants={fadeInUp}
               >
                 <img 
@@ -461,43 +466,10 @@ const Home = () => {
           >
             <Link 
               to="/gallery" 
-              className="px-8 py-3 bg-flamenco-600 text-white rounded-full hover:bg-flamenco-700 transition-colors text-lg font-medium inline-block"
+              className="px-8 py-3 bg-transparent border-2 border-flamenco-600 text-flamenco-600 rounded-full hover:bg-flamenco-600 hover:text-white transition-colors text-lg font-medium inline-block"
             >
               View Full Gallery
             </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-20 md:py-32 bg-gradient-to-r from-flamenco-600 to-red-700">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-black mb-6">
-              Begin Your Flamenco Journey
-            </h2>
-            <p className="text-xl text-black/80 mb-8 max-w-2xl mx-auto">
-              Whether you're a complete beginner or looking to deepen your practice, our doors are open to welcome you into the passionate world of flamenco.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link 
-                to="/classes" 
-                className="px-8 py-4 bg-black text-white rounded-full hover:bg-gray-900 transition-colors text-lg font-medium"
-              >
-                Start Your Classes
-              </Link>
-              <Link 
-                to="/contact" 
-                className="px-8 py-4 border-2 border-black text-black rounded-full hover:bg-black hover:text-white transition-colors text-lg font-medium"
-              >
-                Contact Us
-              </Link>
-            </div>
           </motion.div>
         </div>
       </section>
