@@ -74,14 +74,14 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <h1 className="text-6xl md:text-8xl font-display font-bold text-white mb-6">
+            <h1 className="text-6xl md:text-8xl font-display font-bold mb-6">
               <span className="block">Arte</span>
               <span className="text-flamenco-500">Flamenco</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-8">
+            <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
               Where movement becomes medicine, culture connects communities, and every body finds its rhythm
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
               <Link 
                 to="/classes" 
                 className="px-8 py-3 bg-flamenco-600 text-white rounded-full hover:bg-flamenco-700 transition-colors text-lg font-medium"
