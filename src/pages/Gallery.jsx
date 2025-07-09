@@ -135,7 +135,7 @@ const Gallery = () => {
             backgroundImage: 'url(https://images.pexels.com/photos/3662842/pexels-photo-3662842.jpeg)',
           }}
         >
-          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="absolute inset-0 bg-black/70"></div>
         </div>
         
         <motion.div 
@@ -234,7 +234,7 @@ const Gallery = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-black">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-black">
               Create Your Own Movement Story
             </h2>
             <p className="text-xl text-black/80 mb-8 max-w-2xl mx-auto">
