@@ -62,7 +62,7 @@ const Home = () => {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/50 z-10"></div>
           <img 
-            src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e" 
+            src="https://images.pexels.com/photos/6173891/pexels-photo-6173891.jpeg" 
             alt="Flamenco dancer in action" 
             className="w-full h-full object-cover hero-image"
           />
@@ -75,10 +75,11 @@ const Home = () => {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6">
-              <span className="text-flamenco-500">Arte</span> Flamenco
+              <span className="block">Clarita</span>
+              <span className="text-flamenco-500">Arte Flamenco</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-8">
-              Immerse Yourself in the Passion, Power, and Poetry of Dance
+              Experience the passion, rhythm, and soul of authentic flamenco dance in our studio and performances.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link 
@@ -305,10 +306,9 @@ const Home = () => {
                 variants={fadeInUp}
               >
                 <svg className="w-12 h-12 text-flamenco-600/30 absolute top-6 left-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-9z"/>
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
                 </svg>
-                <p className="text-gray-300 mb-6 relative z-10 italic">"{testimonial.quote}"</p>
-                <div className="flex items-center relative z-10">
+                <div className="flex items-center mb-4 mt-8">
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.name} 
@@ -316,9 +316,10 @@ const Home = () => {
                   />
                   <div>
                     <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                    <p className="text-flamenco-400 text-sm">{testimonial.role}</p>
+                    <p className="text-gray-400 text-sm">{testimonial.role}</p>
                   </div>
                 </div>
+                <p className="text-gray-300 italic">"{testimonial.quote}"</p>
               </motion.div>
             ))}
           </motion.div>
@@ -350,17 +351,15 @@ const Home = () => {
           >
             {[
               {
-                title: "Flamenco Masterclass with Clarita",
+                title: "Flamenco Masterclass",
                 date: "March 15, 2024",
-                time: "7:00 PM - 9:00 PM",
-                description: "An intensive workshop focusing on advanced palmas (hand clapping) and compás understanding.",
+                description: "An intensive workshop with guest artist Carmen Herrera, focusing on advanced palmas and compás techniques.",
                 image: "https://images.pexels.com/photos/8471741/pexels-photo-8471741.jpeg"
               },
               {
-                title: "Spring Recital Performance",
+                title: "Spring Recital",
                 date: "April 20, 2024",
-                time: "6:00 PM - 8:00 PM",
-                description: "Our students showcase their progress in a beautiful evening of flamenco performances.",
+                description: "Our students showcase their progress in a beautiful evening of flamenco performances for family and friends.",
                 image: "https://images.pexels.com/photos/8471742/pexels-photo-8471742.jpeg"
               }
             ].map((event, index) => (
@@ -375,17 +374,22 @@ const Home = () => {
                     alt={event.title} 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 left-4 bg-flamenco-600 text-white text-sm font-medium px-3 py-1 rounded-full">
+                  <div className="absolute top-4 right-4 bg-flamenco-600 text-white text-sm font-medium px-3 py-1 rounded-full">
                     {event.date}
                   </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-display font-bold text-white mb-2">{event.title}</h3>
-                  <p className="text-flamenco-400 text-sm mb-3">{event.time}</p>
                   <p className="text-gray-400 mb-4">{event.description}</p>
-                  <button className="w-full bg-flamenco-600 text-white py-2 px-4 rounded-lg hover:bg-flamenco-700 transition-colors font-medium">
-                    Register Now
-                  </button>
+                  <Link 
+                    to="/performances" 
+                    className="inline-flex items-center text-flamenco-500 hover:text-flamenco-400 transition-colors font-medium"
+                  >
+                    Learn more
+                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -417,10 +421,10 @@ const Home = () => {
             animate={galleryInView ? "visible" : "hidden"}
           >
             <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-4">
-              Capture the <span className="text-flamenco-500">Passion</span>
+              Studio <span className="text-flamenco-500">Gallery</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Experience the beauty and intensity of flamenco through our gallery of performances and classes.
+              Glimpse into the passion and artistry that fills our studio every day.
             </p>
           </motion.div>
           
@@ -438,7 +442,7 @@ const Home = () => {
             ].map((image, index) => (
               <motion.div 
                 key={index}
-                className="aspect-square overflow-hidden rounded-lg group cursor-pointer"
+                className="aspect-square overflow-hidden rounded-lg group"
                 variants={fadeInUp}
               >
                 <img 
@@ -458,10 +462,43 @@ const Home = () => {
           >
             <Link 
               to="/gallery" 
-              className="px-8 py-3 bg-transparent border-2 border-flamenco-600 text-flamenco-600 rounded-full hover:bg-flamenco-600 hover:text-white transition-colors text-lg font-medium inline-block"
+              className="px-8 py-3 bg-flamenco-600 text-white rounded-full hover:bg-flamenco-700 transition-colors text-lg font-medium inline-block"
             >
               View Full Gallery
             </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-20 md:py-32 bg-gradient-to-r from-flamenco-600 to-red-700">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-black mb-6">
+              Begin Your Flamenco Journey
+            </h2>
+            <p className="text-xl text-black/80 mb-8 max-w-2xl mx-auto">
+              Whether you're a complete beginner or looking to deepen your practice, our doors are open to welcome you into the passionate world of flamenco.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link 
+                to="/classes" 
+                className="px-8 py-4 bg-black text-white rounded-full hover:bg-gray-900 transition-colors text-lg font-medium"
+              >
+                Start Your Classes
+              </Link>
+              <Link 
+                to="/contact" 
+                className="px-8 py-4 border-2 border-black text-black rounded-full hover:bg-black hover:text-white transition-colors text-lg font-medium"
+              >
+                Contact Us
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
