@@ -7,29 +7,29 @@ const Classes = () => {
   const [dayFilter, setDayFilter] = useState('all');
 
   const categories = [
-    { id: 'all', name: 'All Classes', icon: '🌟' },
-    { id: 'therapeutic', name: 'Therapeutic & Somatic', icon: '🧘‍♀️' },
-    { id: 'adaptive', name: 'Adaptive & Healing', icon: '♿' },
-    { id: 'cultural', name: 'Cultural & Empowering', icon: '💃' },
-    { id: 'trending', name: 'Trending & Technique', icon: '🔥' }
+    { id: 'all', name: 'All Classes', icon: '🌟', color: 'bg-flamenco-500' },
+    { id: 'therapeutic', name: 'Therapeutic & Somatic', icon: '🧘‍♀️', color: 'bg-emerald-500' },
+    { id: 'adaptive', name: 'Adaptive & Healing', icon: '♿', color: 'bg-blue-500' },
+    { id: 'cultural', name: 'Cultural & Empowering', icon: '💃', color: 'bg-purple-500' },
+    { id: 'trending', name: 'Trending & Technique', icon: '🔥', color: 'bg-orange-500' }
   ];
 
   const skillLevels = [
-    { id: 'all', name: 'All Levels' },
-    { id: 'beginner', name: 'Beginner' },
-    { id: 'intermediate', name: 'Intermediate' },
-    { id: 'advanced', name: 'Advanced' }
+    { id: 'all', name: 'All Levels', color: 'bg-flamenco-500' },
+    { id: 'beginner', name: 'Beginner', color: 'bg-green-500' },
+    { id: 'intermediate', name: 'Intermediate', color: 'bg-yellow-500' },
+    { id: 'advanced', name: 'Advanced', color: 'bg-red-500' }
   ];
 
   const daysOfWeek = [
-    { id: 'all', name: 'All Days' },
-    { id: 'monday', name: 'Monday' },
-    { id: 'tuesday', name: 'Tuesday' },
-    { id: 'wednesday', name: 'Wednesday' },
-    { id: 'thursday', name: 'Thursday' },
-    { id: 'friday', name: 'Friday' },
-    { id: 'saturday', name: 'Saturday' },
-    { id: 'sunday', name: 'Sunday' }
+    { id: 'all', name: 'All Days', color: 'bg-flamenco-500' },
+    { id: 'monday', name: 'Monday', color: 'bg-pink-500' },
+    { id: 'tuesday', name: 'Tuesday', color: 'bg-indigo-500' },
+    { id: 'wednesday', name: 'Wednesday', color: 'bg-teal-500' },
+    { id: 'thursday', name: 'Thursday', color: 'bg-cyan-500' },
+    { id: 'friday', name: 'Friday', color: 'bg-violet-500' },
+    { id: 'saturday', name: 'Saturday', color: 'bg-rose-500' },
+    { id: 'sunday', name: 'Sunday', color: 'bg-amber-500' }
   ];
 
   const classes = [
@@ -545,6 +545,22 @@ const Classes = () => {
     return categoryMatch && skillMatch && dayMatch;
   });
 
+  // Helper functions to get colors
+  const getCategoryColor = (category) => {
+    const categoryObj = categories.find(cat => cat.id === category);
+    return categoryObj ? categoryObj.color : 'bg-gray-500';
+  };
+
+  const getSkillColor = (skill) => {
+    const skillObj = skillLevels.find(level => level.id === skill);
+    return skillObj ? skillObj.color : 'bg-gray-500';
+  };
+
+  const getDayColor = (day) => {
+    const dayObj = daysOfWeek.find(d => d.id === day);
+    return dayObj ? dayObj.color : 'bg-gray-500';
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -618,7 +634,7 @@ const Classes = () => {
                   onClick={() => setActiveCategory(category.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                     activeCategory === category.id
-                      ? 'bg-flamenco-500 text-black'
+                      ? `${category.color} text-black`
                       : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                   }`}
                 >
@@ -639,7 +655,7 @@ const Classes = () => {
                   onClick={() => setSkillFilter(level.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                     skillFilter === level.id
-                      ? 'bg-flamenco-500 text-black'
+                      ? `${level.color} text-black`
                       : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                   }`}
                 >
@@ -659,7 +675,7 @@ const Classes = () => {
                   onClick={() => setDayFilter(day.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                     dayFilter === day.id
-                      ? 'bg-flamenco-500 text-black'
+                      ? `${day.color} text-black`
                       : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                   }`}
                 >
@@ -686,6 +702,10 @@ const Classes = () => {
                 key={classItem.id}
                 variants={itemVariants}
                 className="group relative bg-gray-900 rounded-2xl overflow-hidden hover:bg-gray-800 transition-all duration-500"
+                style={{
+                  borderTop: `4px solid`,
+                  borderImage: `linear-gradient(90deg, ${getCategoryColor(classItem.category).replace('bg-', '')}) 1`
+                }}
               >
                 <div className="aspect-video overflow-hidden">
                   <img 
@@ -699,7 +719,7 @@ const Classes = () => {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex gap-2">
                       {classItem.skillLevels.map((level) => (
-                        <span key={level} className="px-2 py-1 bg-flamenco-500 text-black text-xs font-semibold rounded-full capitalize">
+                        <span key={level} className={`px-2 py-1 ${getSkillColor(level)} text-black text-xs font-semibold rounded-full capitalize`}>
                           {level}
                         </span>
                       ))}
@@ -727,6 +747,15 @@ const Classes = () => {
                       {classItem.schedule}
                     </span>
                   </div>
+
+                  {/* Days of Week Color Indicators */}
+                  <div className="flex gap-2 mb-4">
+                    {classItem.days.map((day) => (
+                      <span key={day} className={`px-2 py-1 ${getDayColor(day)} text-black text-xs font-semibold rounded-full capitalize`}>
+                        {day}
+                      </span>
+                    ))}
+                  </div>
                   
                   <p className="text-gray-300 mb-4 leading-relaxed text-sm">
                     {classItem.description}
@@ -737,14 +766,14 @@ const Classes = () => {
                     <ul className="space-y-1">
                       {classItem.highlights.slice(0, 3).map((highlight, index) => (
                         <li key={index} className="flex items-center gap-2 text-gray-300 text-sm">
-                          <div className="w-1.5 h-1.5 bg-flamenco-500 rounded-full flex-shrink-0"></div>
+                          <div className={`w-1.5 h-1.5 ${getCategoryColor(classItem.category)} rounded-full flex-shrink-0`}></div>
                           {highlight}
                         </li>
                       ))}
                     </ul>
                   </div>
                   
-                  <button className="w-full bg-flamenco-500 hover:bg-flamenco-600 text-black font-semibold py-3 px-6 rounded-lg transition-colors duration-300">
+                  <button className={`w-full ${getCategoryColor(classItem.category)} hover:opacity-80 text-black font-semibold py-3 px-6 rounded-lg transition-all duration-300`}>
                     Book This Class
                   </button>
                 </div>
