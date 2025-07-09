@@ -305,23 +305,21 @@ const Home = () => {
                 className="bg-gray-900 rounded-lg p-8 relative"
                 variants={fadeInUp}
               >
-                <svg className="w-12 h-12 text-flamenco-600/30 absolute top-6 left-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                <svg className="w-12 h-12 text-flamenco-600/30 absolute top-6 left-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-9z" />
                 </svg>
-                <div className="relative z-10">
-                  <p className="text-gray-300 mb-6 italic leading-relaxed">
-                    "{testimonial.quote}"
-                  </p>
-                  <div className="flex items-center">
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name} 
-                      className="w-12 h-12 rounded-full object-cover mr-4"
-                    />
-                    <div>
-                      <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                      <p className="text-flamenco-400 text-sm">{testimonial.role}</p>
-                    </div>
+                <blockquote className="text-gray-300 mb-6 relative z-10">
+                  "{testimonial.quote}"
+                </blockquote>
+                <div className="flex items-center">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name} 
+                    className="w-12 h-12 rounded-full object-cover mr-4"
+                  />
+                  <div>
+                    <div className="text-white font-medium">{testimonial.name}</div>
+                    <div className="text-gray-400 text-sm">{testimonial.role}</div>
                   </div>
                 </div>
               </motion.div>
@@ -343,7 +341,7 @@ const Home = () => {
               Upcoming <span className="text-flamenco-500">Events</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Join us for special performances, workshops, and cultural celebrations throughout the year.
+              Join us for performances, workshops, and special events that celebrate the art of flamenco.
             </p>
           </motion.div>
           
@@ -355,16 +353,18 @@ const Home = () => {
           >
             {[
               {
-                title: "Flamenco Showcase Night",
+                title: "Flamenco Showcase",
                 date: "March 15, 2024",
+                time: "7:00 PM",
                 description: "An evening of passionate performances featuring our advanced students and guest artists from Spain.",
-                image: "https://images.pexels.com/photos/8471740/pexels-photo-8471740.jpeg"
+                image: "https://images.pexels.com/photos/8471741/pexels-photo-8471741.jpeg"
               },
               {
-                title: "Beginner Workshop Series",
+                title: "Beginner Workshop",
                 date: "March 22, 2024",
-                description: "A special 3-day intensive workshop for those new to flamenco, covering basics and cultural context.",
-                image: "https://images.pexels.com/photos/8471815/pexels-photo-8471815.jpeg"
+                time: "2:00 PM",
+                description: "A special introductory workshop for those curious about flamenco. No experience necessary!",
+                image: "https://images.pexels.com/photos/8471816/pexels-photo-8471816.jpeg"
               }
             ].map((event, index) => (
               <motion.div 
@@ -378,15 +378,16 @@ const Home = () => {
                     alt={event.title} 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 right-4 bg-flamenco-600 text-white text-sm font-medium px-3 py-1 rounded-full">
+                  <div className="absolute top-4 left-4 bg-flamenco-600 text-white text-sm font-medium px-3 py-1 rounded-full">
                     {event.date}
                   </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-display font-bold text-white mb-2">{event.title}</h3>
+                  <p className="text-flamenco-500 font-medium mb-2">{event.time}</p>
                   <p className="text-gray-400 mb-4">{event.description}</p>
                   <Link 
-                    to="/performances" 
+                    to="/events" 
                     className="inline-flex items-center text-flamenco-500 hover:text-flamenco-400 transition-colors font-medium"
                   >
                     Learn more
@@ -406,7 +407,7 @@ const Home = () => {
             animate={eventsInView ? "visible" : "hidden"}
           >
             <Link 
-              to="/performances" 
+              to="/events" 
               className="px-8 py-3 bg-flamenco-600 text-white rounded-full hover:bg-flamenco-700 transition-colors text-lg font-medium inline-block"
             >
               View All Events
@@ -415,7 +416,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Gallery Preview */}
+      {/* Gallery Section */}
       <section ref={galleryRef} className="py-20 md:py-32 bg-black">
         <div className="container mx-auto px-4">
           <motion.div 
@@ -428,7 +429,7 @@ const Home = () => {
               Studio <span className="text-flamenco-500">Gallery</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Glimpses of the passion, artistry, and community that define our flamenco studio.
+              Glimpses of our vibrant studio life, performances, and the passionate community of flamenco dancers.
             </p>
           </motion.div>
           
@@ -439,21 +440,30 @@ const Home = () => {
             animate={galleryInView ? "visible" : "hidden"}
           >
             {[
-              "https://images.pexels.com/photos/8471739/pexels-photo-8471739.jpeg",
-              "https://images.pexels.com/photos/8471815/pexels-photo-8471815.jpeg",
-              "https://images.pexels.com/photos/8471798/pexels-photo-8471798.jpeg",
-              "https://images.pexels.com/photos/8471740/pexels-photo-8471740.jpeg"
+              "https://images.pexels.com/photos/8471742/pexels-photo-8471742.jpeg",
+              "https://images.pexels.com/photos/8471817/pexels-photo-8471817.jpeg",
+              "https://images.pexels.com/photos/8471743/pexels-photo-8471743.jpeg",
+              "https://images.pexels.com/photos/8471818/pexels-photo-8471818.jpeg",
+              "https://images.pexels.com/photos/8471744/pexels-photo-8471744.jpeg",
+              "https://images.pexels.com/photos/8471819/pexels-photo-8471819.jpeg",
+              "https://images.pexels.com/photos/8471745/pexels-photo-8471745.jpeg",
+              "https://images.pexels.com/photos/8471820/pexels-photo-8471820.jpeg"
             ].map((image, index) => (
               <motion.div 
                 key={index}
-                className="aspect-square overflow-hidden rounded-lg group cursor-pointer"
+                className="relative overflow-hidden rounded-lg group cursor-pointer"
                 variants={fadeInUp}
               >
                 <img 
                   src={image} 
                   alt={`Gallery image ${index + 1}`} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  </svg>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -466,7 +476,7 @@ const Home = () => {
           >
             <Link 
               to="/gallery" 
-              className="px-8 py-3 bg-transparent border-2 border-flamenco-600 text-flamenco-600 rounded-full hover:bg-flamenco-600 hover:text-white transition-colors text-lg font-medium inline-block"
+              className="px-8 py-3 bg-flamenco-600 text-white rounded-full hover:bg-flamenco-700 transition-colors text-lg font-medium inline-block"
             >
               View Full Gallery
             </Link>
