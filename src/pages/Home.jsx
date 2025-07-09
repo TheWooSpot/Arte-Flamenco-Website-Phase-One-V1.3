@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+You didn't get a call let's just do the math I don't hear the voicemail let's do the math no it makes sense right I mean I hear what they're saying I don't need to hear so this is a 28.5 / for 400 or less which is 7.3 7 this is 7.37 hours per day and we drop her off overtime right now so 9 to 4 sometime off to import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView, useAnimation } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -36,7 +36,7 @@ const Home = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: [0.6, 0.05, -0.01, 0.9]
+        ease: "easeOut"
       }
     }
   };
@@ -75,11 +75,10 @@ const Home = () => {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6">
-              <span className="block">Clarita</span>
               <span className="text-flamenco-500">Arte Flamenco</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-8">
-              Experience the passion, rhythm, and soul of authentic flamenco dance in our studio and performances.
+              Immerse Yourself in the Passion, Power, and Poetry of Dance
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link 
