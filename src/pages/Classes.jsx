@@ -3,13 +3,33 @@ import { motion } from 'framer-motion';
 
 const Classes = () => {
   const [activeCategory, setActiveCategory] = useState('all');
+  const [skillFilter, setSkillFilter] = useState('all');
+  const [dayFilter, setDayFilter] = useState('all');
 
   const categories = [
     { id: 'all', name: 'All Classes', icon: '🌟' },
-    { id: 'therapeutic', name: 'Therapeutic & Somatic', icon: '🌱' },
+    { id: 'therapeutic', name: 'Therapeutic & Somatic', icon: '🧘‍♀️' },
     { id: 'adaptive', name: 'Adaptive & Healing', icon: '♿' },
     { id: 'cultural', name: 'Cultural & Empowering', icon: '💃' },
     { id: 'trending', name: 'Trending & Technique', icon: '🔥' }
+  ];
+
+  const skillLevels = [
+    { id: 'all', name: 'All Levels' },
+    { id: 'beginner', name: 'Beginner' },
+    { id: 'intermediate', name: 'Intermediate' },
+    { id: 'advanced', name: 'Advanced' }
+  ];
+
+  const daysOfWeek = [
+    { id: 'all', name: 'All Days' },
+    { id: 'monday', name: 'Monday' },
+    { id: 'tuesday', name: 'Tuesday' },
+    { id: 'wednesday', name: 'Wednesday' },
+    { id: 'thursday', name: 'Thursday' },
+    { id: 'friday', name: 'Friday' },
+    { id: 'saturday', name: 'Saturday' },
+    { id: 'sunday', name: 'Sunday' }
   ];
 
   const classes = [
@@ -18,14 +38,15 @@ const Classes = () => {
       id: 1,
       title: "Dance/Movement Therapy (DMT)",
       category: "therapeutic",
-      level: "All Levels",
+      skillLevels: ["beginner", "intermediate", "advanced"],
+      days: ["tuesday", "thursday"],
       duration: "75 minutes",
       price: "$40 per session",
-      schedule: "Tuesdays 6:00 PM",
+      schedule: "Tuesdays & Thursdays 6:00 PM",
       description: "Evidence-based therapeutic approach using movement and dance to promote emotional, cognitive, physical, and social integration. Led by certified dance/movement therapist.",
       highlights: [
         "Certified therapeutic approach",
-        "Emotional regulation techniques",
+        "Emotional regulation techniques", 
         "Body awareness development",
         "Stress and trauma processing",
         "Group and individual options"
@@ -36,10 +57,11 @@ const Classes = () => {
       id: 2,
       title: "Somatic Movement Exploration",
       category: "therapeutic",
-      level: "All Levels",
+      skillLevels: ["beginner", "intermediate"],
+      days: ["wednesday", "saturday"],
       duration: "60 minutes",
       price: "$35 per class",
-      schedule: "Thursdays 7:00 PM",
+      schedule: "Wednesdays & Saturdays 7:00 PM",
       description: "Gentle, mindful movement practices that help you reconnect with your body's natural wisdom and release chronic tension patterns.",
       highlights: [
         "Body awareness cultivation",
@@ -52,9 +74,29 @@ const Classes = () => {
     },
     {
       id: 3,
+      title: "Expressive Arts Dance",
+      category: "therapeutic",
+      skillLevels: ["beginner", "intermediate", "advanced"],
+      days: ["friday"],
+      duration: "90 minutes",
+      price: "$42 per class",
+      schedule: "Fridays 5:00 PM",
+      description: "Creative movement combining dance with visual arts, music, and poetry for holistic self-expression and healing.",
+      highlights: [
+        "Multi-modal artistic expression",
+        "Creative healing process",
+        "Personal narrative exploration",
+        "Community art creation",
+        "Therapeutic integration"
+      ],
+      image: "https://images.pexels.com/photos/3662851/pexels-photo-3662851.jpeg"
+    },
+    {
+      id: 4,
       title: "Trauma-Informed Dance",
       category: "therapeutic",
-      level: "All Levels",
+      skillLevels: ["beginner", "intermediate"],
+      days: ["saturday"],
       duration: "90 minutes",
       price: "$45 per session",
       schedule: "Saturdays 2:00 PM",
@@ -66,13 +108,14 @@ const Classes = () => {
         "Nervous system support",
         "Certified trauma-informed instructor"
       ],
-      image: "https://images.pexels.com/photos/3662851/pexels-photo-3662851.jpeg"
+      image: "https://images.pexels.com/photos/3662834/pexels-photo-3662834.jpeg"
     },
     {
-      id: 4,
+      id: 5,
       title: "Movement for Anxiety & Stress Relief",
       category: "therapeutic",
-      level: "Beginner",
+      skillLevels: ["beginner"],
+      days: ["monday", "wednesday"],
       duration: "45 minutes",
       price: "$30 per class",
       schedule: "Mondays & Wednesdays 12:00 PM",
@@ -84,13 +127,14 @@ const Classes = () => {
         "Stress management tools",
         "Accessible for all bodies"
       ],
-      image: "https://images.pexels.com/photos/3662834/pexels-photo-3662834.jpeg"
+      image: "https://images.pexels.com/photos/3662849/pexels-photo-3662849.jpeg"
     },
     {
-      id: 5,
+      id: 6,
       title: "Grief Movement Circles",
       category: "therapeutic",
-      level: "All Levels",
+      skillLevels: ["beginner", "intermediate"],
+      days: ["sunday"],
       duration: "90 minutes",
       price: "$40 per session",
       schedule: "First Sunday of each month 3:00 PM",
@@ -102,16 +146,17 @@ const Classes = () => {
         "Emotional expression",
         "Sacred space holding"
       ],
-      image: "https://images.pexels.com/photos/3662849/pexels-photo-3662849.jpeg"
+      image: "https://images.pexels.com/photos/3662667/pexels-photo-3662667.jpeg"
     },
     {
-      id: 6,
+      id: 7,
       title: "Women's Embodiment Workshops",
       category: "therapeutic",
-      level: "All Levels",
+      skillLevels: ["intermediate", "advanced"],
+      days: ["saturday"],
       duration: "2 hours",
       price: "$55 per workshop",
-      schedule: "Monthly - Check Calendar",
+      schedule: "Monthly Saturdays - Check Calendar",
       description: "Empowering workshops exploring feminine embodiment, sensuality, and personal power through movement, breathwork, and sisterhood.",
       highlights: [
         "Feminine embodiment",
@@ -120,15 +165,35 @@ const Classes = () => {
         "Sisterhood connection",
         "Body positivity focus"
       ],
-      image: "https://images.pexels.com/photos/3662667/pexels-photo-3662667.jpeg"
+      image: "https://images.pexels.com/photos/3662847/pexels-photo-3662847.jpeg"
+    },
+    {
+      id: 8,
+      title: "Family Movement Therapy",
+      category: "therapeutic",
+      skillLevels: ["beginner"],
+      days: ["sunday"],
+      duration: "60 minutes",
+      price: "$50 per family",
+      schedule: "Sundays 11:00 AM",
+      description: "Therapeutic movement sessions designed for families to connect, communicate, and heal together through guided movement experiences.",
+      highlights: [
+        "Family bonding activities",
+        "Communication through movement",
+        "Intergenerational healing",
+        "Playful therapeutic approach",
+        "Relationship strengthening"
+      ],
+      image: "https://images.pexels.com/photos/3662846/pexels-photo-3662846.jpeg"
     },
 
     // Adaptive & Healing Classes
     {
-      id: 7,
+      id: 9,
       title: "Chair-Based Dance",
       category: "adaptive",
-      level: "All Levels",
+      skillLevels: ["beginner", "intermediate"],
+      days: ["tuesday", "friday"],
       duration: "45 minutes",
       price: "$25 per class",
       schedule: "Tuesdays & Fridays 10:00 AM",
@@ -143,10 +208,11 @@ const Classes = () => {
       image: "https://images.pexels.com/photos/6173891/pexels-photo-6173891.jpeg"
     },
     {
-      id: 8,
+      id: 10,
       title: "Dance for Parkinson's",
       category: "adaptive",
-      level: "All Levels",
+      skillLevels: ["beginner", "intermediate"],
+      days: ["monday", "thursday"],
       duration: "60 minutes",
       price: "$20 per class",
       schedule: "Mondays & Thursdays 11:00 AM",
@@ -158,13 +224,14 @@ const Classes = () => {
         "Social engagement",
         "Research-backed approach"
       ],
-      image: "https://images.pexels.com/photos/3662847/pexels-photo-3662847.jpeg"
+      image: "https://images.pexels.com/photos/3662845/pexels-photo-3662845.jpeg"
     },
     {
-      id: 9,
+      id: 11,
       title: "Gentle Movement for Chronic Pain",
       category: "adaptive",
-      level: "Beginner",
+      skillLevels: ["beginner"],
+      days: ["wednesday"],
       duration: "50 minutes",
       price: "$30 per class",
       schedule: "Wednesdays 2:00 PM",
@@ -176,13 +243,14 @@ const Classes = () => {
         "Nervous system care",
         "Adaptive modifications"
       ],
-      image: "https://images.pexels.com/photos/3662846/pexels-photo-3662846.jpeg"
+      image: "https://images.pexels.com/photos/3662844/pexels-photo-3662844.jpeg"
     },
     {
-      id: 10,
+      id: 12,
       title: "Neurodiverse Movement Labs",
       category: "adaptive",
-      level: "All Levels",
+      skillLevels: ["beginner", "intermediate"],
+      days: ["saturday"],
       duration: "60 minutes",
       price: "$35 per class",
       schedule: "Saturdays 10:00 AM",
@@ -194,15 +262,16 @@ const Classes = () => {
         "Multiple expression modes",
         "Inclusive community"
       ],
-      image: "https://images.pexels.com/photos/3662845/pexels-photo-3662845.jpeg"
+      image: "https://images.pexels.com/photos/3662843/pexels-photo-3662843.jpeg"
     },
 
     // Cultural & Empowering Styles
     {
-      id: 11,
+      id: 13,
       title: "Afro-Caribbean Healing Rhythms",
       category: "cultural",
-      level: "All Levels",
+      skillLevels: ["beginner", "intermediate", "advanced"],
+      days: ["sunday"],
       duration: "75 minutes",
       price: "$35 per class",
       schedule: "Sundays 4:00 PM",
@@ -214,13 +283,14 @@ const Classes = () => {
         "Community building",
         "Healing through heritage"
       ],
-      image: "https://images.pexels.com/photos/3662844/pexels-photo-3662844.jpeg"
+      image: "https://images.pexels.com/photos/3662842/pexels-photo-3662842.jpeg"
     },
     {
-      id: 12,
+      id: 14,
       title: "Sacred World Dance",
       category: "cultural",
-      level: "All Levels",
+      skillLevels: ["beginner", "intermediate"],
+      days: ["saturday"],
       duration: "90 minutes",
       price: "$40 per class",
       schedule: "First Saturday of each month 6:00 PM",
@@ -232,13 +302,14 @@ const Classes = () => {
         "Spiritual connection",
         "Cultural respect"
       ],
-      image: "https://images.pexels.com/photos/3662843/pexels-photo-3662843.jpeg"
+      image: "https://images.pexels.com/photos/3662841/pexels-photo-3662841.jpeg"
     },
     {
-      id: 13,
+      id: 15,
       title: "Flamenco for Emotional Empowerment",
       category: "cultural",
-      level: "Intermediate",
+      skillLevels: ["intermediate", "advanced"],
+      days: ["tuesday", "thursday"],
       duration: "75 minutes",
       price: "$40 per class",
       schedule: "Tuesdays & Thursdays 7:30 PM",
@@ -250,13 +321,33 @@ const Classes = () => {
         "Passion cultivation",
         "Personal strength building"
       ],
-      image: "https://images.pexels.com/photos/3662842/pexels-photo-3662842.jpeg"
+      image: "https://images.pexels.com/photos/3662840/pexels-photo-3662840.jpeg"
     },
     {
-      id: 14,
-      title: "Latin Fusion",
+      id: 16,
+      title: "Tahitian & Polynesian Dance",
       category: "cultural",
-      level: "All Levels",
+      skillLevels: ["beginner", "intermediate", "advanced"],
+      days: ["friday"],
+      duration: "60 minutes",
+      price: "$38 per class",
+      schedule: "Fridays 6:30 PM",
+      description: "Experience the joy and power of Polynesian dance traditions. Connect with island culture through authentic movements and storytelling.",
+      highlights: [
+        "Polynesian cultural traditions",
+        "Storytelling through dance",
+        "Hip and core strengthening",
+        "Cultural appreciation",
+        "Joyful expression"
+      ],
+      image: "https://images.pexels.com/photos/3662839/pexels-photo-3662839.jpeg"
+    },
+    {
+      id: 17,
+      title: "Latin Fusion (Cumbia, Bachata, Reggaetón)",
+      category: "cultural",
+      skillLevels: ["beginner", "intermediate", "advanced"],
+      days: ["friday"],
       duration: "60 minutes",
       price: "$30 per class",
       schedule: "Fridays 7:00 PM",
@@ -268,105 +359,16 @@ const Classes = () => {
         "Community connection",
         "Fitness benefits"
       ],
-      image: "https://images.pexels.com/photos/3662841/pexels-photo-3662841.jpeg"
+      image: "https://images.pexels.com/photos/3662838/pexels-photo-3662838.jpeg"
     },
 
     // Trending & Technique-Based Classes
     {
-      id: 15,
-      title: "Hip-Hop Therapy",
-      category: "trending",
-      level: "All Levels",
-      duration: "60 minutes",
-      price: "$30 per class",
-      schedule: "Wednesdays 6:00 PM",
-      description: "High-energy hip-hop combined with therapeutic principles. Build confidence, release stress, and connect with community through urban dance culture.",
-      highlights: [
-        "Therapeutic hip-hop",
-        "Confidence building",
-        "Stress release",
-        "Urban culture connection",
-        "Community vibes"
-      ],
-      image: "https://images.pexels.com/photos/3662840/pexels-photo-3662840.jpeg"
-    },
-    {
-      id: 16,
-      title: "Contemporary & Lyrical",
-      category: "trending",
-      level: "Intermediate",
-      duration: "75 minutes",
-      price: "$35 per class",
-      schedule: "Mondays 7:00 PM",
-      description: "Emotional storytelling through contemporary dance. Develop technical skills while exploring personal narrative and artistic expression.",
-      highlights: [
-        "Emotional storytelling",
-        "Technical development",
-        "Personal narrative",
-        "Artistic expression",
-        "Creative exploration"
-      ],
-      image: "https://images.pexels.com/photos/3662839/pexels-photo-3662839.jpeg"
-    },
-    {
-      id: 17,
-      title: "K-Pop Dance",
-      category: "trending",
-      level: "Beginner",
-      duration: "60 minutes",
-      price: "$25 per class",
-      schedule: "Saturdays 1:00 PM",
-      description: "Learn popular K-Pop choreography in a fun, supportive environment. Perfect for teens and young adults looking to connect with contemporary culture.",
-      highlights: [
-        "Popular choreography",
-        "Contemporary culture",
-        "Teen-friendly",
-        "Fun atmosphere",
-        "Social connection"
-      ],
-      image: "https://images.pexels.com/photos/3662838/pexels-photo-3662838.jpeg"
-    },
-    {
       id: 18,
-      title: "Ecstatic Dance",
-      category: "trending",
-      level: "All Levels",
-      duration: "90 minutes",
-      price: "$25 per class",
-      schedule: "Sundays 6:00 PM",
-      description: "Freeform, judgment-free movement experience. No choreography, just authentic self-expression in a supportive community setting.",
-      highlights: [
-        "Freeform movement",
-        "Judgment-free space",
-        "Authentic expression",
-        "Community support",
-        "No choreography required"
-      ],
-      image: "https://images.pexels.com/photos/3662837/pexels-photo-3662837.jpeg"
-    },
-    {
-      id: 19,
-      title: "Ballet (Classical & Therapeutic)",
-      category: "trending",
-      level: "All Levels",
-      duration: "75 minutes",
-      price: "$35 per class",
-      schedule: "Tuesdays & Saturdays 9:00 AM",
-      description: "Classical ballet technique with therapeutic modifications. Build strength, grace, and posture while honoring individual body needs.",
-      highlights: [
-        "Classical technique",
-        "Therapeutic modifications",
-        "Strength building",
-        "Posture improvement",
-        "Individual adaptations"
-      ],
-      image: "https://images.pexels.com/photos/3662836/pexels-photo-3662836.jpeg"
-    },
-    {
-      id: 20,
       title: "Salsa (Social & Solo)",
       category: "trending",
-      level: "Beginner to Advanced",
+      skillLevels: ["beginner", "intermediate", "advanced"],
+      days: ["thursday"],
       duration: "60 minutes",
       price: "$30 per class",
       schedule: "Thursdays 8:00 PM",
@@ -378,13 +380,170 @@ const Classes = () => {
         "Confidence building",
         "Latin tradition"
       ],
+      image: "https://images.pexels.com/photos/3662837/pexels-photo-3662837.jpeg"
+    },
+    {
+      id: 19,
+      title: "Tap Dance",
+      category: "trending",
+      skillLevels: ["beginner", "intermediate", "advanced"],
+      days: ["monday", "wednesday"],
+      duration: "60 minutes",
+      price: "$32 per class",
+      schedule: "Mondays & Wednesdays 5:30 PM",
+      description: "Develop rhythm and musicality through the percussive art of tap dance. Build coordination, timing, and musical expression.",
+      highlights: [
+        "Rhythm and musicality",
+        "Coordination development",
+        "Musical expression",
+        "Percussive technique",
+        "Performance skills"
+      ],
+      image: "https://images.pexels.com/photos/3662836/pexels-photo-3662836.jpeg"
+    },
+    {
+      id: 20,
+      title: "Ballet (Classical & Therapeutic)",
+      category: "trending",
+      skillLevels: ["beginner", "intermediate", "advanced"],
+      days: ["tuesday", "saturday"],
+      duration: "75 minutes",
+      price: "$35 per class",
+      schedule: "Tuesdays & Saturdays 9:00 AM",
+      description: "Classical ballet technique with therapeutic modifications. Build strength, grace, and posture while honoring individual body needs.",
+      highlights: [
+        "Classical technique",
+        "Therapeutic modifications",
+        "Strength building",
+        "Posture improvement",
+        "Individual adaptations"
+      ],
       image: "https://images.pexels.com/photos/3662835/pexels-photo-3662835.jpeg"
+    },
+    {
+      id: 21,
+      title: "Contemporary & Lyrical",
+      category: "trending",
+      skillLevels: ["intermediate", "advanced"],
+      days: ["monday"],
+      duration: "75 minutes",
+      price: "$35 per class",
+      schedule: "Mondays 7:00 PM",
+      description: "Emotional storytelling through contemporary dance. Develop technical skills while exploring personal narrative and artistic expression.",
+      highlights: [
+        "Emotional storytelling",
+        "Technical development",
+        "Personal narrative",
+        "Artistic expression",
+        "Creative exploration"
+      ],
+      image: "https://images.pexels.com/photos/3662834/pexels-photo-3662834.jpeg"
+    },
+    {
+      id: 22,
+      title: "Hip-Hop Therapy",
+      category: "trending",
+      skillLevels: ["beginner", "intermediate", "advanced"],
+      days: ["wednesday"],
+      duration: "60 minutes",
+      price: "$30 per class",
+      schedule: "Wednesdays 6:00 PM",
+      description: "High-energy hip-hop combined with therapeutic principles. Build confidence, release stress, and connect with community through urban dance culture.",
+      highlights: [
+        "Therapeutic hip-hop",
+        "Confidence building",
+        "Stress release",
+        "Urban culture connection",
+        "Community vibes"
+      ],
+      image: "https://images.pexels.com/photos/3662833/pexels-photo-3662833.jpeg"
+    },
+    {
+      id: 23,
+      title: "Jazz Funk",
+      category: "trending",
+      skillLevels: ["beginner", "intermediate", "advanced"],
+      days: ["tuesday"],
+      duration: "60 minutes",
+      price: "$32 per class",
+      schedule: "Tuesdays 6:30 PM",
+      description: "Trendy choreography combining jazz technique with funk attitude. Fun, high-energy classes focused on style, performance, and fitness.",
+      highlights: [
+        "Trendy choreography",
+        "Performance style",
+        "High-energy fitness",
+        "Jazz technique",
+        "Funk attitude"
+      ],
+      image: "https://images.pexels.com/photos/3662832/pexels-photo-3662832.jpeg"
+    },
+    {
+      id: 24,
+      title: "K-Pop Dance",
+      category: "trending",
+      skillLevels: ["beginner", "intermediate"],
+      days: ["saturday"],
+      duration: "60 minutes",
+      price: "$25 per class",
+      schedule: "Saturdays 1:00 PM",
+      description: "Learn popular K-Pop choreography in a fun, supportive environment. Perfect for teens and young adults looking to connect with contemporary culture.",
+      highlights: [
+        "Popular choreography",
+        "Contemporary culture",
+        "Teen-friendly",
+        "Fun atmosphere",
+        "Social connection"
+      ],
+      image: "https://images.pexels.com/photos/3662831/pexels-photo-3662831.jpeg"
+    },
+    {
+      id: 25,
+      title: "Zumba® Latin Cardio",
+      category: "trending",
+      skillLevels: ["beginner", "intermediate"],
+      days: ["monday", "wednesday", "friday"],
+      duration: "45 minutes",
+      price: "$20 per class",
+      schedule: "Mon/Wed/Fri 6:00 AM & 7:00 PM",
+      description: "Accessible Latin-inspired cardio dance for all fitness levels. High-energy, fun workout that feels more like a party than exercise.",
+      highlights: [
+        "Latin-inspired cardio",
+        "All fitness levels",
+        "High-energy workout",
+        "Party atmosphere",
+        "Accessible movement"
+      ],
+      image: "https://images.pexels.com/photos/3662830/pexels-photo-3662830.jpeg"
+    },
+    {
+      id: 26,
+      title: "Ecstatic Dance",
+      category: "trending",
+      skillLevels: ["beginner", "intermediate", "advanced"],
+      days: ["sunday"],
+      duration: "90 minutes",
+      price: "$25 per class",
+      schedule: "Sundays 6:00 PM",
+      description: "Freeform, judgment-free movement experience. No choreography, just authentic self-expression in a supportive community setting.",
+      highlights: [
+        "Freeform movement",
+        "Judgment-free space",
+        "Authentic expression",
+        "Community support",
+        "No choreography required"
+      ],
+      image: "https://images.pexels.com/photos/3662829/pexels-photo-3662829.jpeg"
     }
   ];
 
-  const filteredClasses = activeCategory === 'all' 
-    ? classes 
-    : classes.filter(classItem => classItem.category === activeCategory);
+  // Filter classes based on all active filters
+  const filteredClasses = classes.filter(classItem => {
+    const categoryMatch = activeCategory === 'all' || classItem.category === activeCategory;
+    const skillMatch = skillFilter === 'all' || classItem.skillLevels.includes(skillFilter);
+    const dayMatch = dayFilter === 'all' || classItem.days.includes(dayFilter);
+    
+    return categoryMatch && skillMatch && dayMatch;
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -446,24 +605,68 @@ const Classes = () => {
         </motion.div>
       </section>
 
-      {/* Category Filter */}
+      {/* Filter Section */}
       <section className="py-12 px-6 bg-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  activeCategory === category.id
-                    ? 'bg-flamenco-500 text-black'
-                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                }`}
-              >
-                <span className="mr-2">{category.icon}</span>
-                {category.name}
-              </button>
-            ))}
+        <div className="max-w-7xl mx-auto">
+          {/* Dance Type Filter */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold text-center mb-4 text-flamenco-400">Filter by Dance Type</h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                    activeCategory === category.id
+                      ? 'bg-flamenco-500 text-black'
+                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  }`}
+                >
+                  <span className="mr-2">{category.icon}</span>
+                  {category.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Skill Level Filter */}
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold text-center mb-4 text-flamenco-400">Filter by Skill Level</h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              {skillLevels.map((level) => (
+                <button
+                  key={level.id}
+                  onClick={() => setSkillFilter(level.id)}
+                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                    skillFilter === level.id
+                      ? 'bg-flamenco-500 text-black'
+                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  }`}
+                >
+                  {level.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Days of Week Filter */}
+          <div>
+            <h3 className="text-lg font-semibold text-center mb-4 text-flamenco-400">Filter by Days of Week</h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              {daysOfWeek.map((day) => (
+                <button
+                  key={day.id}
+                  onClick={() => setDayFilter(day.id)}
+                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                    dayFilter === day.id
+                      ? 'bg-flamenco-500 text-black'
+                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  }`}
+                >
+                  {day.name}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -475,8 +678,8 @@ const Classes = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            key={activeCategory}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+            key={`${activeCategory}-${skillFilter}-${dayFilter}`}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {filteredClasses.map((classItem) => (
               <motion.div
@@ -492,21 +695,25 @@ const Classes = () => {
                   />
                 </div>
                 
-                <div className="p-8">
+                <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="px-3 py-1 bg-flamenco-500 text-black text-sm font-semibold rounded-full">
-                      {classItem.level}
-                    </span>
+                    <div className="flex gap-2">
+                      {classItem.skillLevels.map((level) => (
+                        <span key={level} className="px-2 py-1 bg-flamenco-500 text-black text-xs font-semibold rounded-full capitalize">
+                          {level}
+                        </span>
+                      ))}
+                    </div>
                     <span className="text-flamenco-400 font-bold text-lg">
                       {classItem.price}
                     </span>
                   </div>
                   
-                  <h3 className="text-2xl font-display font-bold mb-3 group-hover:text-flamenco-400 transition-colors">
+                  <h3 className="text-xl font-display font-bold mb-3 group-hover:text-flamenco-400 transition-colors">
                     {classItem.title}
                   </h3>
                   
-                  <div className="flex items-center gap-4 mb-4 text-gray-400">
+                  <div className="flex items-center gap-4 mb-4 text-gray-400 text-sm">
                     <span className="flex items-center gap-2">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
@@ -521,16 +728,16 @@ const Classes = () => {
                     </span>
                   </div>
                   
-                  <p className="text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-gray-300 mb-4 leading-relaxed text-sm">
                     {classItem.description}
                   </p>
                   
                   <div className="mb-6">
-                    <h4 className="text-flamenco-400 font-semibold mb-3">What You'll Experience:</h4>
-                    <ul className="space-y-2">
-                      {classItem.highlights.map((highlight, index) => (
-                        <li key={index} className="flex items-center gap-3 text-gray-300">
-                          <div className="w-2 h-2 bg-flamenco-500 rounded-full flex-shrink-0"></div>
+                    <h4 className="text-flamenco-400 font-semibold mb-2 text-sm">What You'll Experience:</h4>
+                    <ul className="space-y-1">
+                      {classItem.highlights.slice(0, 3).map((highlight, index) => (
+                        <li key={index} className="flex items-center gap-2 text-gray-300 text-sm">
+                          <div className="w-1.5 h-1.5 bg-flamenco-500 rounded-full flex-shrink-0"></div>
                           {highlight}
                         </li>
                       ))}
@@ -544,6 +751,22 @@ const Classes = () => {
               </motion.div>
             ))}
           </motion.div>
+
+          {filteredClasses.length === 0 && (
+            <div className="text-center py-16">
+              <p className="text-xl text-gray-400 mb-4">No classes match your current filters.</p>
+              <button 
+                onClick={() => {
+                  setActiveCategory('all');
+                  setSkillFilter('all');
+                  setDayFilter('all');
+                }}
+                className="bg-flamenco-500 hover:bg-flamenco-600 text-black font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
+              >
+                Clear All Filters
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
