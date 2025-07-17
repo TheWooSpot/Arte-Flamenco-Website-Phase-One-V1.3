@@ -306,7 +306,7 @@ const Home = () => {
                 variants={fadeInUp}
               >
                 <svg className="w-12 h-12 text-flamenco-600/30 absolute top-6 left-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-9z" />
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.995 3.638-3.995 5.849h4v10h-9.983z"/>
                 </svg>
                 <blockquote className="text-gray-300 mb-6 relative z-10">
                   "{testimonial.quote}"
@@ -318,8 +318,8 @@ const Home = () => {
                     className="w-12 h-12 rounded-full object-cover mr-4"
                   />
                   <div>
-                    <div className="text-white font-medium">{testimonial.name}</div>
-                    <div className="text-gray-400 text-sm">{testimonial.role}</div>
+                    <div className="text-white font-semibold">{testimonial.name}</div>
+                    <div className="text-flamenco-400 text-sm">{testimonial.role}</div>
                   </div>
                 </div>
               </motion.div>
@@ -341,30 +341,37 @@ const Home = () => {
               Upcoming <span className="text-flamenco-500">Events</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Join us for performances, workshops, and special events that celebrate the art of flamenco.
+              Join us for special performances, workshops, and cultural celebrations throughout the year.
             </p>
           </motion.div>
           
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={staggerContainer}
             initial="hidden"
             animate={eventsInView ? "visible" : "hidden"}
           >
             {[
               {
-                title: "Flamenco Showcase",
+                title: "Flamenco Fusion Night",
                 date: "March 15, 2024",
                 time: "7:00 PM",
-                description: "An evening of passionate performances featuring our advanced students and guest artists from Spain.",
+                description: "An evening of traditional flamenco blended with contemporary influences.",
                 image: "https://images.pexels.com/photos/8471741/pexels-photo-8471741.jpeg"
               },
               {
-                title: "Beginner Workshop",
+                title: "Master Class with Guest Artist",
                 date: "March 22, 2024",
                 time: "2:00 PM",
-                description: "A special introductory workshop for those curious about flamenco. No experience necessary!",
-                image: "https://images.pexels.com/photos/8471816/pexels-photo-8471816.jpeg"
+                description: "Learn from renowned flamenco artist Isabella Martinez in this exclusive workshop.",
+                image: "https://images.pexels.com/photos/8471742/pexels-photo-8471742.jpeg"
+              },
+              {
+                title: "Student Showcase",
+                date: "April 5, 2024",
+                time: "6:00 PM",
+                description: "Celebrate our students' progress with performances from all skill levels.",
+                image: "https://images.pexels.com/photos/8471743/pexels-photo-8471743.jpeg"
               }
             ].map((event, index) => (
               <motion.div 
@@ -372,7 +379,7 @@ const Home = () => {
                 className="bg-black/50 backdrop-blur-sm rounded-lg overflow-hidden group"
                 variants={fadeInUp}
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <img 
                     src={event.image} 
                     alt={event.title} 
@@ -384,10 +391,10 @@ const Home = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-display font-bold text-white mb-2">{event.title}</h3>
-                  <p className="text-flamenco-500 font-medium mb-2">{event.time}</p>
+                  <p className="text-flamenco-400 text-sm mb-2">{event.time}</p>
                   <p className="text-gray-400 mb-4">{event.description}</p>
                   <Link 
-                    to="/events" 
+                    to="/performances" 
                     className="inline-flex items-center text-flamenco-500 hover:text-flamenco-400 transition-colors font-medium"
                   >
                     Learn more
@@ -399,24 +406,10 @@ const Home = () => {
               </motion.div>
             ))}
           </motion.div>
-          
-          <motion.div 
-            className="text-center mt-12"
-            variants={fadeInUp}
-            initial="hidden"
-            animate={eventsInView ? "visible" : "hidden"}
-          >
-            <Link 
-              to="/events" 
-              className="px-8 py-3 bg-flamenco-600 text-white rounded-full hover:bg-flamenco-700 transition-colors text-lg font-medium inline-block"
-            >
-              View All Events
-            </Link>
-          </motion.div>
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {/* Gallery Preview Section */}
       <section ref={galleryRef} className="py-20 md:py-32 bg-black">
         <div className="container mx-auto px-4">
           <motion.div 
@@ -429,7 +422,7 @@ const Home = () => {
               Studio <span className="text-flamenco-500">Gallery</span>
             </h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
-              Glimpses of our vibrant studio life, performances, and the passionate community of flamenco dancers.
+              Glimpse into the passion and artistry that fills our studio every day.
             </p>
           </motion.div>
           
@@ -440,24 +433,24 @@ const Home = () => {
             animate={galleryInView ? "visible" : "hidden"}
           >
             {[
-              "https://images.pexels.com/photos/8471742/pexels-photo-8471742.jpeg",
-              "https://images.pexels.com/photos/8471817/pexels-photo-8471817.jpeg",
-              "https://images.pexels.com/photos/8471743/pexels-photo-8471743.jpeg",
-              "https://images.pexels.com/photos/8471818/pexels-photo-8471818.jpeg",
               "https://images.pexels.com/photos/8471744/pexels-photo-8471744.jpeg",
-              "https://images.pexels.com/photos/8471819/pexels-photo-8471819.jpeg",
               "https://images.pexels.com/photos/8471745/pexels-photo-8471745.jpeg",
-              "https://images.pexels.com/photos/8471820/pexels-photo-8471820.jpeg"
+              "https://images.pexels.com/photos/8471746/pexels-photo-8471746.jpeg",
+              "https://images.pexels.com/photos/8471747/pexels-photo-8471747.jpeg",
+              "https://images.pexels.com/photos/8471748/pexels-photo-8471748.jpeg",
+              "https://images.pexels.com/photos/8471749/pexels-photo-8471749.jpeg",
+              "https://images.pexels.com/photos/8471750/pexels-photo-8471750.jpeg",
+              "https://images.pexels.com/photos/8471751/pexels-photo-8471751.jpeg"
             ].map((image, index) => (
               <motion.div 
                 key={index}
-                className="relative overflow-hidden rounded-lg group cursor-pointer"
+                className="relative aspect-square overflow-hidden rounded-lg group cursor-pointer"
                 variants={fadeInUp}
               >
                 <img 
                   src={image} 
                   alt={`Gallery image ${index + 1}`} 
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

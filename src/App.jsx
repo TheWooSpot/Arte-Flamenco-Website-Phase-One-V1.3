@@ -5,7 +5,10 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Classes from './pages/Classes';
 import About from './pages/About';
-import Placeholder from './pages/Placeholder';
+import Performances from './pages/Performances';
+import Gallery from './pages/Gallery';
+import Contact from './pages/Contact';
+import Shop from './pages/Shop';
 
 function App() {
   const location = useLocation();
@@ -48,10 +51,10 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="classes" element={<Classes />} />
-            <Route path="performances" element={<Placeholder title="Performances" />} />
-            <Route path="gallery" element={<Placeholder title="Gallery" />} />
-            <Route path="contact" element={<Placeholder title="Contact" />} />
-            <Route path="shop" element={<Placeholder title="Shop" />} />
+            <Route path="performances" element={<Performances />} />
+            <Route path="gallery" element={<Gallery />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="shop" element={<Shop />} />
           </Route>
         </Routes>
       </AnimatePresence>
