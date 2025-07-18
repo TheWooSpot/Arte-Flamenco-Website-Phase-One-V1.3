@@ -22,7 +22,7 @@ const Classes = () => {
   ];
 
   const daysOfWeek = [
-    { id: 'all', name: 'All Days', color: 'bg-flamenco-500' },
+    { id: 'all', name: 'Any Day', color: 'bg-flamenco-500' },
     { id: 'monday', name: 'Monday', color: 'bg-pink-500' },
     { id: 'tuesday', name: 'Tuesday', color: 'bg-indigo-500' },
     { id: 'wednesday', name: 'Wednesday', color: 'bg-teal-500' },
@@ -621,67 +621,73 @@ const Classes = () => {
         </motion.div>
       </section>
 
-      {/* Filter Section */}
-      <section className="py-12 px-6 bg-gray-900">
+      {/* Filter Section - Three Column Layout */}
+      <section className="py-16 px-6 bg-gray-900">
         <div className="max-w-7xl mx-auto">
-          {/* Dance Type Filter */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold text-center mb-4 text-flamenco-400">Filter by Dance Type</h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                    activeCategory === category.id
-                      ? `${category.color} text-black`
-                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  }`}
-                >
-                  <span className="mr-2">{category.icon}</span>
-                  {category.name}
-                </button>
-              ))}
+          <h2 className="text-4xl font-display font-bold text-center mb-12 text-white">
+            Find the Perfect Class
+          </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Dance Categories Column */}
+            <div>
+              <h3 className="text-xl font-semibold mb-6 text-flamenco-400">Dance Categories</h3>
+              <div className="space-y-3">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setActiveCategory(category.id)}
+                    className={`w-full h-12 px-4 rounded-lg font-medium text-left transition-all duration-300 ${
+                      activeCategory === category.id
+                        ? `${category.color} text-black`
+                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                    }`}
+                  >
+                    <span className="mr-2">{category.icon}</span>
+                    {category.name}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Skill Level Filter */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold text-center mb-4 text-flamenco-400">Filter by Skill Level</h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              {skillLevels.map((level) => (
-                <button
-                  key={level.id}
-                  onClick={() => setSkillFilter(level.id)}
-                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                    skillFilter === level.id
-                      ? `${level.color} text-black`
-                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  }`}
-                >
-                  {level.name}
-                </button>
-              ))}
+            {/* Skill Levels Column */}
+            <div>
+              <h3 className="text-xl font-semibold mb-6 text-flamenco-400">Skill Levels</h3>
+              <div className="space-y-3">
+                {skillLevels.map((level) => (
+                  <button
+                    key={level.id}
+                    onClick={() => setSkillFilter(level.id)}
+                    className={`w-full h-12 px-4 rounded-lg font-medium text-left transition-all duration-300 ${
+                      skillFilter === level.id
+                        ? `${level.color} text-black`
+                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                    }`}
+                  >
+                    {level.name}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Days of Week Filter */}
-          <div>
-            <h3 className="text-lg font-semibold text-center mb-4 text-flamenco-400">Filter by Days of Week</h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              {daysOfWeek.map((day) => (
-                <button
-                  key={day.id}
-                  onClick={() => setDayFilter(day.id)}
-                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                    dayFilter === day.id
-                      ? `${day.color} text-black`
-                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  }`}
-                >
-                  {day.name}
-                </button>
-              ))}
+            {/* Schedule Column */}
+            <div>
+              <h3 className="text-xl font-semibold mb-6 text-flamenco-400">Schedule</h3>
+              <div className="space-y-3">
+                {daysOfWeek.map((day) => (
+                  <button
+                    key={day.id}
+                    onClick={() => setDayFilter(day.id)}
+                    className={`w-full h-12 px-4 rounded-lg font-medium text-left transition-all duration-300 ${
+                      dayFilter === day.id
+                        ? `${day.color} text-black`
+                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                    }`}
+                  >
+                    {day.name}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -724,7 +730,7 @@ const Classes = () => {
                         </span>
                       ))}
                     </div>
-                    <span className="text-flamenco-400 font-bold text-lg">
+                    <span className="text-flamenco-400 font-semibold text-xs">
                       {classItem.price}
                     </span>
                   </div>

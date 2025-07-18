@@ -171,7 +171,7 @@ const Gallery = () => {
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`h-12 px-6 rounded-lg font-medium transition-all duration-300 ${
                   activeCategory === category.id
                     ? 'bg-flamenco-500 text-black'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
